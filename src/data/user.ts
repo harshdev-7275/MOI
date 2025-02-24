@@ -28,5 +28,9 @@ export const sampleUsers : User[] = [
     {
         username: "harsh",
         password: "password"
+    },
+    {
+        username:"test",
+        password:"password"
     }
   ];
