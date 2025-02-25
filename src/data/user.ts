@@ -4,33 +4,33 @@ export type User ={
 }
 
 
-export const sampleUsers : User[] = [
-    {
+export const sampleUsers: User[] = [
+  {
       username: "john_doe",
-      password: "Password123"
-    },
-    {
+      password: "JdSecure2024!"
+  },
+  {
       username: "jane_smith",
-      password: "Welcome2025"
-    },
-    {
+      password: "Jane#Spring25"
+  },
+  {
       username: "alex123",
-      password: "Alex!987"
-    },
-    {
+      password: "Alex!Night87"
+  },
+  {
       username: "sarah_m",
-      password: "Sarah#456"
-    },
-    {
+      password: "Sarah#Blue92"
+  },
+  {
       username: "mike_jones",
-      password: "Mikey2023"
-    },
-    {
-        username: "harsh",
-        password: "password"
-    },
-    {
-        username:"test",
-        password:"password"
-    }
-  ];
+      password: "Mike2023@safe"
+  },
+  {
+      username: "harsh",
+      password: "Harsh$Tiger99"
+  },
+  {
+      username: "test",
+      password: "Test!Demo42"
+  }
+];
