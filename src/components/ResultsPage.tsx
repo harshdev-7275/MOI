@@ -108,22 +108,22 @@ const ResultsPage: React.FC<ResultsPageProps> = ({
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
                   <p className="text-blue-300 font-medium flex gap-1 items-center"><Lightbulb />Suggestions for Improvement</p>
-                  <p className="text-white">Use better encryption</p>
+                  <p className="text-white">Enable AES-256 encryption for video streams and stored footage</p>
                 </div>
 
                 <div className="flex items-center justify-between p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
-                  <p className="text-blue-300 font-medium flex gap-1 items-center"><Eclipse />Blind spots to address</p>
-                  <p className="text-white">3 detected</p>
+                  <p className="text-blue-300 font-medium flex gap-1 items-center"><Eclipse />Blind Spots to Address</p>
+                  <p className="text-white">3 detected: Adjust camera angles or add coverage in entry points</p>
                 </div>
 
                 <div className="flex items-center justify-between p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
                   <p className="text-blue-300 font-medium flex gap-1 items-center"><Database />Storage Optimization</p>
-                  <p className="text-white">Use another encoder</p>
+                  <p className="text-white">Switch to H.265 compression to reduce storage without losing quality</p>
                 </div>
 
                 <div className="flex items-center justify-between p-3 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
                   <p className="text-blue-300 font-medium flex gap-1 items-center"><Gauge />Latency Reduction</p>
-                  <p className="text-white">Optimize encoding & bandwidth</p>
+                  <p className="text-white">Use lower bitrate settings and prioritize local network storage</p>
                 </div>
               </div>
             </div>
