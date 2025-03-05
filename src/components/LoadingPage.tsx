@@ -4,7 +4,6 @@ import { Camera, Building, Scan, Crosshair } from 'lucide-react';
 import buildingAnimation from "../assets/buildingAnimation.json"
 import Lottie from 'react-lottie-player'
 import loadingVideo1 from "../assets/loadingVideo1.gif"
-import loadingAnimation2 from "../assets/loadingAnimation2.gif"
 
 
 
@@ -20,7 +19,7 @@ const LoadingPage = ({ setIsAnalyzingLoadingDone }: any) => {
         const timer = setTimeout(() => {
             setLoading(false);
             setIsAnalyzingLoadingDone(true);
-        }, 10000);
+        }, 20000);
 
         const progressInterval = setInterval(() => {
             setProgress(prev => {

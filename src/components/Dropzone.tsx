@@ -16,8 +16,8 @@ export function Dropzone({ onFileAccepted }: DropzoneProps) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpg', '.jpeg', '.png', '.gif','.dwg'],
-      'application/pdf': ['.pdf'],
+      
+      'application/dxf': ['.dxf'],
     },
     maxFiles: 1,
   });
