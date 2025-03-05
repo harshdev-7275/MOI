@@ -3,6 +3,7 @@ import { Upload, CheckCircle2, Camera, ChevronLeft, ChevronRight, Shield } from 
 import { Dropzone } from '../components/Dropzone';
 import LoadingPage from '../components/LoadingPage';
 import ResultsPage from '../components/ResultsPage';
+import imageCompression from 'browser-image-compression';
 
 
 type FloorPlanView = {
@@ -22,26 +23,78 @@ const [showResults, setShowResults] = useState<boolean>(false);
 
 
 
-useEffect(() => {
-  if (isAnalyzingLoadingDone) {
-    setIsAnalyzing(false);
-    setShowResults(true);
-    console.log("isAnalyzingLoadingDone", isAnalyzingLoadingDone);
-  }
-}, [isAnalyzingLoadingDone]);
+// useEffect(() => {
+//   if (isAnalyzingLoadingDone) {
+//     setIsAnalyzing(false);
+//     setShowResults(true);
+//     console.log("isAnalyzingLoadingDone", isAnalyzingLoadingDone);
+//   }
+// }, [isAnalyzingLoadingDone]);
 
 
 
-  const handleAnalyze =()=>{
+
+const handleFileAccepted = (file: File) => {
+  setUploadedFile(file);
+  setIsFileUploaded(true);
+};
+
+  const handleAnalyze = async () => {
     setIsAnalyzing(true);
-  }
- 
-
-  const handleFileAccepted = (file: File) => {
-    setUploadedFile(file);
-      setIsFileUploaded(true);
-
-    // Handle file upload logic here
+  
+    try {
+      // Create FormData object
+      const formData = new FormData();
+      if (uploadedFile) {
+        formData.append('file', uploadedFile);
+        formData.append('format', 'dxf');
+      }
+  
+      // Upload file to server (let browser handle headers)
+      const response = await fetch('https://sight.wiki/upload', {
+        method: 'POST',
+        body: uploadedFile,
+      });
+  
+      // Check if response is successful
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Upload response:', data);
+        if (data.success) {
+          setTimeout(() => {
+            setIsAnalyzingLoadingDone(true);
+          }, 2000);
+        } else {
+          setIsAnalyzing(false);
+          console.error('Upload failed:', data.message);
+          alert('Upload failed: ' + data.message);
+        }
+      } else {
+        setIsAnalyzing(false);
+        let errorMessage = response.statusText || 'Unknown error';
+  
+        // Attempt to parse JSON, fall back to status text if it fails
+        try {
+          const data = await response.json();
+          if (data.message) {
+            errorMessage = data.message;
+          }
+        } catch (e) {
+          console.error('Failed to parse error response:', e);
+        }
+  
+        if (response.status === 413) {
+          alert('The uploaded file is too large. Please upload a smaller file. ' + errorMessage);
+        } else {
+          alert('Upload failed: ' + errorMessage + ' (Status: ' + response.status + ')');
+        }
+      }
+    } catch (error) {
+      // Handle network errors
+      setIsAnalyzing(false);
+      console.error('Upload error:', error);
+      alert('Upload error: ' + (error instanceof Error ? error.message : String(error)));
+    }
   };
   return (
     <div className="min-h-screen bg-black text-white">
